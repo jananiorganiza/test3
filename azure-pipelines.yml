@@ -32,7 +32,8 @@ steps:
     artifactsFeeds: 'maven'
 
 - script: |
-    mv $(codeql_path)/codeql /home/vsts/work/1/s/codeql
+    mv $(codeql_path)/codeql /home/vsts/work/1/codeql
+    chmod +x /home/vsts/work/1/codeql
     pwd
     ./codeql database create java-database --language=java --command='mvn clean package' 
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
