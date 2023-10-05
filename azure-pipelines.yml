@@ -32,8 +32,8 @@ steps:
     artifactsFeeds: 'maven'
 
 - script: |
-    mv /home/vsts/work/1/s/pom.xml $(codeql_path)
-    cd $(codeql_path)
+    mv $(codeql_path)/codeql /home/vsts/work/1/s/codeql/
+    cd /home/vsts/work/1/s/codeql/
     ./codeql database create java-database --language=java --command='mvn clean package' 
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
     ./codeql database analyze java-database java-code-scanning.qls --format=sarifv2.1.0 --sarif-category=java --output=/home/vsts/work/1/s/codeql/java-database.sarif
