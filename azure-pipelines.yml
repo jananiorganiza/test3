@@ -36,7 +36,7 @@ steps:
     cd $(codeql_path)
     ./codeql database create java-database --language=java --command='mvn clean package' 
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
-    ./codeql database analyze java-database java-code-scanning.qls --sarif-category=java --format=sarifv2.1.0 --output=/temp/java-database.sarif
+    ./codeql database analyze java-database java-code-scanning.qls --format=sarifv2.1.0 --output=/temp/java-database.sarif
     ./codeql database finalize java-database
     ./codeql github upload-results  --repository=jananiorganiza/test3 --sarif=/temp/java-database.sarif --github-url=https://github.com --github-auth-stdin $(GITHUB_PAT)
     # ./codeql database init
