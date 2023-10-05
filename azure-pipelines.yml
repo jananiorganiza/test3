@@ -35,7 +35,7 @@ steps:
     mv /home/vsts/work/1/s/pom.xml $(codeql_path)
     cd $(codeql_path)
     ./codeql database create java-database --language=java --command='mvn clean package' 
-    cd $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/
+    mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
     ./codeql database analyze java-database java-code-scanning.qls --sarif-category=java --format=sarifv2.1.0 --output=/temp/java-database.sarif
     ./codeql github upload-results  --repository=jananiorganiza/test3 --sarif=/temp/java-database.sarif --github-url=https://github.com --github-auth $(GITHUB_PAT)
     # ./codeql database init
