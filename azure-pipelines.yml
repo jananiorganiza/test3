@@ -36,6 +36,8 @@ steps:
     pwd
     cd /home/vsts/work/1/s/
     ls
+    mv /home/vsts/work/1/s/pom.xml /home/vsts/work/1/s/codeql/pom.xml
+    mv /home/vsts/work/1/s/src /home/vsts/work/1/s/codeql/src
     cd /home/vsts/work/1/s/codeql
     ls
     ./codeql database create java-database --language=java --command='mvn clean package' 
