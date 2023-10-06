@@ -42,9 +42,9 @@ steps:
     ls
     ./codeql database create java-database --language=java --command='mvn clean package' 
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
-    ./codeql database analyze java-database java-code-scanning.qls --format=sarifv2.1.0 --sarif-category=java --output=/temp/java-database.sarif
+    ./codeql database analyze java-database java-code-scanning.qls --format=sarifv2.1.0 --sarif-category=java --output=$(codeql_path)/java-database.sarif
     ./codeql database finalize java-database 
-    cd /home/vsts/work/1/s/codeql/java-database/results
+    cd /home/vsts/work/1/s/codeql
     ls
     # cd $(codeql_path)
     # ./codeql github upload-results  --repository=jananiorganiza/test3 --ref=refs/heads/main --commit=67453583387e8ee574963cd3e0a16d7a5bee2f5a --sarif=/temp/java-database.sarif --github-url=https://github.com --github-auth-stdin=$(GITHUB_PAT)
