@@ -94,7 +94,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven Wrapper
-      run: mvn -s settings.xml clean  package -DskipTests
+      run: mvn -s settings.xml  package -DskipTests
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
 
