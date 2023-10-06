@@ -78,7 +78,7 @@ jobs:
                <password>dqrtgbptz6rnzec2zptdzizhz26jaxbshdw6yir57nykqjyvbm6q</password>
              </server>
            </servers>
-         </settings>" > $HOME/.m2/settings.xml
+         </settings>" > /home/runner/work/test3/test3/settings.xml
 
       env:
         AZURE_DEVOPS_TOKEN: dqrtgbptz6rnzec2zptdzizhz26jaxbshdw6yir57nykqjyvbm6q
@@ -94,7 +94,7 @@ jobs:
         distribution: 'adopt'
         cache: maven
     - name: Build with Maven Wrapper
-      run: mvn --settings settings.xml clean  package -DskipTests
+      run: mvn -s settings.xml clean  package -DskipTests
     # ℹ️ Command-line programs to run using the OS shell.
     # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun
 
