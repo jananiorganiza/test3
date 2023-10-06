@@ -40,7 +40,7 @@ steps:
     mv /home/vsts/work/1/s/src /home/vsts/work/1/s/codeql/src
     cd /home/vsts/work/1/s/codeql
     ls
-    ./codeql database create java-database --language=java --spawn_strategy=local --command='mvn clean package' --noremote_upload_local_results /home/vsts/work/1/s/codeql/
+    ./codeql database create java-database --language=java --command='mvn clean package'
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
     ./codeql database analyze java-database java-code-scanning.qls --format=sarifv2.1.0 --sarif-category=java --output=/home/vsts/work/1/s/codeql/java-database.sarif
     cd /home/vsts/work/1/s/codeql
