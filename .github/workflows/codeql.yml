@@ -66,7 +66,7 @@ jobs:
          echo "<settings>
            <mirrors>
              <mirror>
-               <id>azure-mirror</id>
+               <id>maven</id>
                <url>https://pkgs.dev.azure.com/janakiab981/_packaging/maven/maven/v1</url>
                <mirrorOf>*</mirrorOf>
              </mirror>
