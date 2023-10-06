@@ -40,14 +40,14 @@ steps:
     mv /home/vsts/work/1/s/src /home/vsts/work/1/s/codeql/src
     cd /home/vsts/work/1/s/codeql
     ls
-    ./codeql database create java-database --language=java --command='mvn clean package' 
+    ./codeql database create codeql-dbs --source-root=$(codeql_path)/src --language=java --command='mvn clean package' 
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
-    ./codeql database analyze java-database java-code-scanning.qls --format=sarifv2.1.0 --sarif-category=java --output=$(codeql_path)/java-database/results/java-database.sarif
+    ./codeql database analyze codeql-dbs/java java-code-scanning.qls  --format=sarif-latest --sarif-category=java --output=java-results.sarif
     ./codeql database finalize java-database 
     cd /home/vsts/work/1/s/codeql/java-database/results
     ls
     # cd $(codeql_path)
-    # ./codeql github upload-results  --repository=jananiorganiza/test3 --ref=refs/heads/main --commit=67453583387e8ee574963cd3e0a16d7a5bee2f5a --sarif=/temp/java-database.sarif --github-url=https://github.com --github-auth-stdin=$(GITHUB_PAT)
+    # ./codeql github upload-results  --repository=jananiorganiza/test3 --ref=refs/heads/main --commit=67453583387e8ee574963cd3e0a16d7a5bee2f5a --sarif=java-results.sarif --github-url=https://github.com --github-auth-stdin=$(GITHUB_PAT)
     # ./codeql database init
   displayName: codeql analyze
 # - task: Bash@3
