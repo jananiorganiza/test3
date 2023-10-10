@@ -48,6 +48,10 @@ steps:
     # ./codeql github upload-results  --repository=jananiorganiza/test3 --ref=refs/heads/main --commit=67453583387e8ee574963cd3e0a16d7a5bee2f5a --sarif=/home/vsts/work/1/s/codeql/java-database.sarif --github-url=https://github.com --github-auth-stdin=$(GITHUB_PAT)
     # ./codeql database init
   displayName: codeql analyze
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '/home/vsts/work/1/s/codeql/java-database.sarif'
+    artifact: 'codeql-results'
 # - task: Bash@3
 #   inputs:
 #     targetType: 'inline'
