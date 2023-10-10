@@ -42,16 +42,12 @@ steps:
     ls
     ./codeql database create java-database --language=java --command='mvn clean package'
     mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
-    ./codeql database analyze java-database --format=sarifv2.1.0 --sarif-category=java --output=/home/vsts/work/1/s/codeql/java-database.sarif
-    cd /home/vsts/work/1/s/codeql/
+    ./codeql database analyze java-database --format=sarifv2.1.0 --sarif-category=java --output=/home/vsts/work/1/s/codeql/java-database/java-database.sarif
+    cd /home/vsts/work/1/s/codeql/codeql
     ls
     # ./codeql github upload-results  --repository=jananiorganiza/test3 --ref=refs/heads/main --commit=67453583387e8ee574963cd3e0a16d7a5bee2f5a --sarif=/home/vsts/work/1/s/codeql/java-database.sarif --github-url=https://github.com --github-auth-stdin=$(GITHUB_PAT)
     # ./codeql database init
   displayName: codeql analyze
-- task: PublishPipelineArtifact@1
-  inputs:
-    targetPath: '/home/vsts/work/1/s/codeql/java-database.sarif'
-    artifact: 'codeql-results'
 # - task: Bash@3
 #   inputs:
 #     targetType: 'inline'
