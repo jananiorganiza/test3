@@ -38,7 +38,7 @@ steps:
     ls
     mv /home/vsts/work/1/s/pom.xml /home/vsts/work/1/s/codeql/pom.xml
     mv /home/vsts/work/1/s/src /home/vsts/work/1/s/codeql/src
-    cd /home/vsts/work/1/s/
+    cd /home/vsts/work/1/s/codeql/java
     ls
     # ./codeql database create codeql-dbs/java --language=java --command='mvn clean package'
     # mv $(codeql_path)/qlpacks/codeql/java-queries/0.8.0/codeql-suites/java-code-scanning.qls $(codeql_path)
